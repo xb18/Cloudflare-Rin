@@ -122,7 +122,7 @@ S3_ACCESS_HOST=https://images.你的域名.com
 
 ## Star 历史
 
-[![Star History Chart](https://api.star-history.com/svg?repos=openRin/Rin&type=Date&theme=dark)](https://star-history.com/#openRin/Rin&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=openRin/Rin&type=Date)](https://star-history.com/#openRin/Rin&Date)
 
 ---
 
