@@ -1,75 +1,133 @@
 # Rin
 
-[English](./README.md) | 简体中文
-
+<div align="center">
 
 ![封面](https://repository-images.githubusercontent.com/803866357/958bc2c1-1703-4127-920c-853291495bdc)
 
-![GitHub commit activity](https://img.shields.io/github/commit-activity/w/openRin/Rin?style=for-the-badge)
-![GitHub branch check runs](https://img.shields.io/github/check-runs/openRin/Rin/main?style=for-the-badge)
-![GitHub top language](https://img.shields.io/github/languages/top/openRin/Rin?style=for-the-badge)
-![GitHub License](https://img.shields.io/github/license/openRin/Rin?style=for-the-badge)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/openRin/Rin/deploy.yaml?style=for-the-badge)
+一款轻量级、无服务器的博客平台，基于 Cloudflare Workers 构建。
 
-# 介绍
+[![GitHub 许可证](https://img.shields.io/github/license/openRin/Rin?style=for-the-badge)](LICENSE)
+[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-F38020?style=for-the-badge&logo=cloudflare)](https://workers.cloudflare.com)
+[![Bun](https://img.shields.io/badge/Bun-000000?style=for-the-badge&logo=bun)](https://bun.sh)
 
-Rin 是一个基于 Cloudflare Pages + Workers + D1 + R2 全家桶的博客，无需服务器无需备案，只需要一个解析到 Cloudflare 的域名即可部署。
+**[English](./README.md) | 简体中文**
 
-## 演示地址
+</div>
 
-[xeu.life](https://xeu.life)
+---
 
+## 介绍
 
-## 特性
-1. 支持 Github OAuth 登录，默认第一个登录的用户拥有管理权限，其他用户均为普通用户
-2. 支持文章的写作与编辑
-3. 支持本地实时保存对任意文章的修改/编辑且多篇文章互不干扰
-4. 支持设置为仅自己可见，可以充当云端同步的草稿箱或者记录隐私性较强的内容
-5. 支持拖拽/粘贴上传图片到支持 S3 协议的存储桶并生成链接
-6. 支持设置文章别名，可通过形如 https://xeu.life/about 链接访问文章
-7. 支持文章不列出在首页列表中
-8. 支持添加友链，同时后端每间隔 20 分钟定期检查更新友链可访问状态
-9. 支持回复评论文章/删除评论
-10. 支持通过 Webhook 发送评论通知
-11. 支持自动识别文章中的第一张图片并作为头图展示在文章列表中
-12. 支持输入形如"#博客 #部署 #Cloudflare"之类的标签文本并自动解析为标签
-13. 更多特性请参考 https://xeu.life
+Rin 是一款轻量级、无服务器的博客平台，基于 Cloudflare 边缘生态系统构建。只需一个解析到 Cloudflare 的域名，即可快速部署，无需管理服务器。
 
-# 文档
+### 技术栈
 
-[docs.openrin.org](https://docs.openrin.org)
+- **前端**: React + TypeScript + Vite
+- **后端**: Cloudflare Workers + Elysia
+- **数据库**: Cloudflare D1 (SQLite)
+- **存储**: Cloudflare R2 (S3 兼容)
+- **包管理器**: Bun
 
-## Star History
+---
 
-<a href="https://star-history.com/#openRin/Rin&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=openRin/Rin&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=openRin/Rin&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=openRin/Rin&type=Date" />
- </picture>
-</a>
+## 功能特性
 
-# License
+- ✍️ **富文本编辑器** - 支持 Markdown 和实时预览
+- 🔐 **GitHub OAuth** - 使用 GitHub 安全登录
+- 📱 **响应式设计** - 适配所有设备
+- 🖼️ **图片上传** - 支持 S3 兼容存储
+- 💬 **评论系统** - 内置评论功能
+- 🔗 **友链管理** - 博客链接健康监控
+- 🏷️ **标签系统** - 内容分类管理
+- 📊 **数据统计** - 访问追踪和 RSS 订阅
+- 🔔 **Webhooks** - 评论通知
+
+---
+
+## 快速部署
+
+### 1. Fork 并设置
+
+在 GitHub 上 Fork 本仓库，然后克隆：
+
+```bash
+git clone https://github.com/YOUR_USERNAME/Rin.git
+cd Rin
 ```
-MIT License
 
-Copyright (c) 2024 Xeu
+### 2. 配置密钥和变量
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+进入仓库 **Settings > Secrets and Variables > Actions**：
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+**Repository Secrets（加密）**:
 ```
+CLOUDFLARE_ACCOUNT_ID
+CLOUDFLARE_API_TOKEN
+```
+
+**Variables（明文）**:
+```
+DB_NAME=rin
+WORKER_NAME=rin-server
+FRONTEND_URL=https://你的域名.com
+S3_BUCKET=你的R2存储桶名称
+S3_REGION=auto
+S3_ENDPOINT=https://你的账号.r2.cloudflarestorage.com
+S3_ACCESS_HOST=https://images.你的域名.com
+```
+
+### 3. 触发部署
+
+推送任何更改即可触发 GitHub Actions，或手动从 Actions 标签运行工作流。
+
+详细部署指南请参考[部署文档](docs/DEPLOY.md)。
+
+---
+
+## 本地开发
+
+对于想要本地开发的贡献者，请参考[开发指南](docs/DEPLOY.md#本地开发)。
+
+---
+
+## 文档
+
+- [部署指南](docs/DEPLOY.md)
+- [环境变量](docs/ENV.md)
+- [RSS 配置](docs/RSS.md)
+- [SEO 优化](docs/SEO.md)
+
+完整文档请访问 [docs.openrin.org](https://docs.openrin.org)
+
+---
+
+## 演示
+
+访问 [xeu.life](https://xeu.life) 查看 Rin 的实际效果。
+
+---
+
+## 贡献
+
+欢迎贡献！请阅读[贡献指南](CONTRIBUTING_zh_CN.md)了解更多详情。
+
+---
+
+## 社区
+
+- [Discord](https://discord.gg/JWbSTHvAPN)
+- [Telegram](https://t.me/openRin)
+
+---
+
+## Star 历史
+
+[![Star History Chart](https://api.star-history.com/svg?repos=openRin/Rin&type=Date&theme=dark)](https://star-history.com/#openRin/Rin&Date)
+
+---
+
+## 许可证
+
+MIT License © 2024 [Xeu](https://github.com/openRin)
+
+详见 [LICENSE](LICENSE) 文件。

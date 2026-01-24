@@ -9,18 +9,21 @@
       "cache": false,
       "persistent": true
     },
-    "t": {
+    "check": {
+      "dependsOn": ["^check"]
+    },
+    "test": {
       "cache": false,
-      "dependsOn": ["^g"]
+      "dependsOn": ["^type:gen"]
     },
-    "g": {
-        "cache": false,
-        "dependsOn": ["^db:gen"]
+    "type:gen": {
+      "cache": false,
+      "dependsOn": ["^db:generate"]
     },
-    "db:gen": {
+    "db:generate": {
       "cache": false
     },
-    "db:mig": {
+    "db:migrate": {
       "cache": false
     },
     "format:check": {
@@ -29,11 +32,8 @@
     "format:write": {
       "dependsOn": ["^format:write"]
     },
-    "cf:deploy": {
+    "deploy": {
       "cache": false
-    },
-    "check": {
-      "dependsOn": ["^check"]
     }
   }
 }

@@ -275,6 +275,45 @@ S3_ACCESS_HOST=https://image.xeu.life
 > [!TIP]
 > 在所有环境变量调试完毕后可点击加密按钮加密环境变量（只保留 FRONTEND_URL 和 S3_FOLDER），这样下次部署时加密的环境变量就不会覆盖/删除了
 
+## 本地开发
+
+### 环境要求
+
+- **Bun** ≥ 1.0（包管理器）
+- **Node.js** ≥ 18（Wrangler 本地开发需要）
+
+### 快速开始
+
+```bash
+# 1. 安装依赖
+bun install
+
+# 2. 配置环境变量
+cp .env.example .env
+# 编辑 .env 文件填入必要配置
+
+# 3. 同步配置到子项目
+bun run config:sync
+
+# 4. 启动开发环境
+bun dev
+```
+
+访问地址：
+- 前端: http://localhost:5173
+- 后端: http://localhost:11498
+
+### 可用命令
+
+| 命令 | 说明 |
+|------|------|
+| `bun dev` | 启动完整开发环境 |
+| `bun dev:client` | 仅启动前端 |
+| `bun dev:server` | 仅启动后端 |
+| `bun build` | 构建生产版本 |
+| `bun deploy` | 部署到 Cloudflare |
+| `bun check` | 类型检查 |
+
 # 操作视频
 由于时间原因未对以下视频做剪辑与后期说明处理，如果对于部署流程不了解或疑惑可参考视频步骤
 

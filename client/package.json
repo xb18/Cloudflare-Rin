@@ -9,7 +9,7 @@
     "check": "tsc",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "i18n": "i18next"
+    "i18n:extract": "i18next"
   },
   "dependencies": {
     "@astroimg/timeago": "^1.1.6",

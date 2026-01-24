@@ -1,75 +1,133 @@
 # Rin
 
-English | [简体中文](./README_zh_CN.md)
+<div align="center">
 
 ![Cover](https://repository-images.githubusercontent.com/803866357/958bc2c1-1703-4127-920c-853291495bdc)
 
-![GitHub commit activity](https://img.shields.io/github/commit-activity/w/openRin/Rin?style=for-the-badge)
-![GitHub branch check runs](https://img.shields.io/github/check-runs/openRin/Rin/main?style=for-the-badge)
-![GitHub top language](https://img.shields.io/github/languages/top/openRin/Rin?style=for-the-badge)
-![GitHub License](https://img.shields.io/github/license/openRin/Rin?style=for-the-badge)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/openRin/Rin/deploy.yaml?style=for-the-badge)
+A minimal, serverless blog platform built with Cloudflare Workers.
 
-[![Discord](https://img.shields.io/badge/Discord-openRin-red?style=for-the-badge&color=%236e7acc)](https://discord.gg/JWbSTHvAPN)
-[![Telegram](https://img.shields.io/badge/Telegram-openRin-red?style=for-the-badge&color=%233390EC)](https://t.me/openRin)
+[![GitHub License](https://img.shields.io/github/license/openRin/Rin?style=for-the-badge)](LICENSE)
+[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-F38020?style=for-the-badge&logo=cloudflare)](https://workers.cloudflare.com)
+[![Bun](https://img.shields.io/badge/Bun-000000?style=for-the-badge&logo=bun)](https://bun.sh)
 
-# Introduction
+**[English](./README.md) | [简体中文](./README_zh_CN.md)**
 
-Rin is a blog based on Cloudflare Pages + Workers + D1 + R2. It does not require a server to deploy. It can be deployed just with a domain name that resolves to Cloudflare.
+</div>
+
+---
+
+## About
+
+Rin is a lightweight, serverless blog platform powered by Cloudflare's edge ecosystem. Deploy instantly with zero configuration required beyond a domain name pointing to Cloudflare.
+
+### Tech Stack
+
+- **Frontend**: React + TypeScript + Vite
+- **Backend**: Cloudflare Workers + Elysia
+- **Database**: Cloudflare D1 (SQLite)
+- **Storage**: Cloudflare R2 (S3-compatible)
+- **Package Manager**: Bun
+
+---
+
+## Features
+
+- ✍️ **Rich Text Editor** - Markdown support with live preview
+- 🔐 **GitHub OAuth** - Secure authentication with GitHub
+- 📱 **Responsive Design** - Optimized for all devices
+- 🖼️ **Image Upload** - S3-compatible storage support
+- 💬 **Comments** - Built-in commenting system
+- 🔗 **Friends Links** - Blogroll with health monitoring
+- 🏷️ **Tags & Hashtags** - Organize your content
+- 📊 **Analytics** - Visit tracking and RSS feeds
+- 🔔 **Webhooks** - Comment notifications
+
+---
+
+## Quick Deploy
+
+### 1. Fork & Setup
+
+Fork this repository on GitHub, then clone it:
+
+```bash
+git clone https://github.com/YOUR_USERNAME/Rin.git
+cd Rin
+```
+
+### 2. Configure Secrets & Variables
+
+Go to your repository **Settings > Secrets and Variables > Actions**:
+
+**Repository Secrets (encrypted)**:
+```
+CLOUDFLARE_ACCOUNT_ID
+CLOUDFLARE_API_TOKEN
+```
+
+**Variables (plain text)**:
+```
+DB_NAME=rin
+WORKER_NAME=rin-server
+FRONTEND_URL=https://your-domain.com
+S3_BUCKET=your-r2-bucket-name
+S3_REGION=auto
+S3_ENDPOINT=https://your-account.r2.cloudflarestorage.com
+S3_ACCESS_HOST=https://images.your-domain.com
+```
+
+### 3. Trigger Deployment
+
+Push any change to trigger GitHub Actions, or manually run the workflow from the Actions tab.
+
+See [Deployment Guide](docs/DEPLOY.md) for detailed instructions.
+
+---
+
+## Local Development
+
+For contributors who want to develop locally, see [Development Guide](docs/DEPLOY.md#local-development).
+
+---
+
+## Documentation
+
+- [Deployment Guide](docs/DEPLOY.md)
+- [Environment Variables](docs/ENV.md)
+- [RSS Feed Configuration](docs/RSS.md)
+- [SEO Optimization](docs/SEO.md)
+
+Full documentation available at [docs.openrin.org](https://docs.openrin.org)
+
+---
 
 ## Demo
 
-[xeu.life](https://xeu.life)
+Visit [xeu.life](https://xeu.life) to see Rin in action.
 
-## Features
-1. Support GitHub OAuth login. By default, the first logged-in user has management privileges, and other users are ordinary users
-2. Support article writing and editing
-3. Support local real-time saving of modifications/edits to any article without interfering between multiple articles
-4. Support setting it as visible only to yourself, which can serve as a draft box for cloud synchronization or record more private content
-5. Support dragging/pasting uploaded images to a bucket that supports the S3 protocol and generating links
-6. Support setting article aliases, and access articles through links such as https://xeu.life/about
-7. Support articles not being listed in the homepage list
-8. Support adding links of friends' blog, and the backend regularly checks and updates the accessible status of links every 20 minutes
-9. Support replying to comment articles/deleting comments
-10. Support sending comment notifications through Webhook
-11. Support automatic identification of the first picture in the article and display it as the header image in the article list
-12. Support inputting tag texts such as "#Blog #Cloudflare" and automatically parsing them into tags
-13. For more features, please refer to https://xeu.life
+---
 
-# Documentation
-[docs.openrin.org](https://docs.openrin.org)
+## Contributing
+
+Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details.
+
+---
+
+## Community
+
+- [Discord](https://discord.gg/JWbSTHvAPN)
+- [Telegram](https://t.me/openRin)
+
+---
 
 ## Star History
 
-<a href="https://star-history.com/#openRin/Rin&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=openRin/Rin&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=openRin/Rin&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=openRin/Rin&type=Date" />
- </picture>
-</a>
+[![Star History Chart](https://api.star-history.com/svg?repos=openRin/Rin&type=Date)](https://star-history.com/#openRin/Rin&Date)
 
-# License
-```
-MIT License
+---
 
-Copyright (c) 2024 Xeu
+## License
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+MIT License © 2024 [Xeu](https://github.com/openRin)
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
+See [LICENSE](LICENSE) for details.
